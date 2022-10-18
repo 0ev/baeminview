@@ -1,4 +1,3 @@
-import axios from "axios";
 import Shop from "../components/Shop";
 
 export default function baeminPage({ pageComponentProps }) {
@@ -37,13 +36,14 @@ export async function getServerSideProps(ctx) {
 
   console.log(shopNo);
 
-  const res = await axios.get(
-    `https://shopdp-api.baemin.com/v8/shop/${shopNo}/detail`,
-    {
-      params: {
+  const tmp = await fetch(
+    `https://shopdp-api.baemin.com/v8/shop/${shopNo}/detail?${new URLSearchParams(
+      {
         lat: "37.46907588",
         lng: "126.93691645",
-      },
+      }
+    )}`,
+    {
       headers: {
         "User-Agent": "and1_10.27.1",
         Carrier: "45005",
@@ -53,8 +53,10 @@ export async function getServerSideProps(ctx) {
     }
   );
 
+  const res = await tmp.json();
+
   console.log(res);
-  const pageComponentProps = res.data;
+  const pageComponentProps = res;
   return {
     props: {
       pageComponentProps,
