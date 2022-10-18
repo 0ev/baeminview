@@ -53,7 +53,11 @@ export async function getServerSideProps(ctx) {
     }
   );
 
-  console.log(tmp);
+  const text = await tmp.text();
+
+  console.log("#############");
+  console.log(text);
+  console.log("#############");
 
   const res = await tmp.json();
 
