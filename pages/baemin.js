@@ -53,6 +53,8 @@ export async function getServerSideProps(ctx) {
     }
   );
 
+  console.log(tmp);
+
   const res = await tmp.json();
 
   console.log(res);
