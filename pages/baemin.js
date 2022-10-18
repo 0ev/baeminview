@@ -1,7 +1,6 @@
 import Shop from "../components/Shop";
 
 export default function baeminPage({ pageComponentProps }) {
-  console.log(pageComponentProps);
   return (
     <div>
       <Shop data={pageComponentProps} />
@@ -34,8 +33,6 @@ export async function getServerSideProps(ctx) {
 
   const shopNo = 13711170;
 
-  console.log(shopNo);
-
   const tmp = await fetch(
     `https://shopdp-api.baemin.com/v8/shop/${shopNo}/detail?${new URLSearchParams(
       {
@@ -53,15 +50,8 @@ export async function getServerSideProps(ctx) {
     }
   );
 
-  const text = await tmp.text();
-
-  console.log("#############");
-  console.log(text);
-  console.log("#############");
-
   const res = await tmp.json();
 
-  console.log(res);
   const pageComponentProps = res;
   return {
     props: {
