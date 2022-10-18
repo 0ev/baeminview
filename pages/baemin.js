@@ -2,6 +2,7 @@ import axios from "axios";
 import Shop from "../components/Shop";
 
 export default function baeminPage({ pageComponentProps }) {
+  console.log(pageComponentProps);
   return (
     <div>
       <Shop data={pageComponentProps} />
