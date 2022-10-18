@@ -22,6 +22,8 @@ export async function getServerSideProps(ctx) {
     };
   }
 
+  console.log(url);
+
   const temp = await fetch(url, {
     redirect: "manual",
   });
@@ -29,6 +31,8 @@ export async function getServerSideProps(ctx) {
     .get("location")
     .split("shopDetail_shopNo=")[1]
     .split("&")[0];
+
+  console.log(shopNo);
 
   const res = await axios.get(
     `https://shopdp-api.baemin.com/v8/shop/${shopNo}/detail`,
@@ -45,6 +49,8 @@ export async function getServerSideProps(ctx) {
       },
     }
   );
+
+  console.log(res);
   const pageComponentProps = res.data;
   return {
     props: {
