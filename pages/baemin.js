@@ -21,34 +21,9 @@ export async function getServerSideProps(ctx) {
     };
   }
 
-  console.log(url);
+  const shopNo = url.split("/").pop();
 
-  // const temp = await fetch(url, {
-  //   redirect: "manual",
-  // });
-  // const shopNo = temp.headers
-  //   .get("location")
-  //   .split("shopDetail_shopNo=")[1]
-  //   .split("&")[0];
-
-  const shopNo = 13711170;
-
-  const tmp = await fetch(
-    `https://shopdp-api.baemin.com/v8/shop/${shopNo}/detail?${new URLSearchParams(
-      {
-        lat: "37.46907588",
-        lng: "126.93691645",
-      }
-    )}`,
-    {
-      headers: {
-        "User-Agent": "and1_10.27.1",
-        Carrier: "45005",
-        "Device-Height": "1600",
-        "Device-Width": "900",
-      },
-    }
-  );
+  const tmp = await fetch(`http://143.244.129.185/shop/${shopNo}`);
 
   const res = await tmp.json();
 
