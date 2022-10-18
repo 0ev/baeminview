@@ -1,6 +1,5 @@
 import axios from "axios";
 import Shop from "../components/Shop";
-import fetch from "node-fetch";
 
 export default function baeminPage({ pageComponentProps }) {
   return (
@@ -11,6 +10,7 @@ export default function baeminPage({ pageComponentProps }) {
 }
 
 export async function getServerSideProps(ctx) {
+  console.log(ctx);
   const url = ctx.query?.url;
   if (!url) {
     return {
@@ -24,13 +24,15 @@ export async function getServerSideProps(ctx) {
 
   console.log(url);
 
-  const temp = await fetch(url, {
-    redirect: "manual",
-  });
-  const shopNo = temp.headers
-    .get("location")
-    .split("shopDetail_shopNo=")[1]
-    .split("&")[0];
+  // const temp = await fetch(url, {
+  //   redirect: "manual",
+  // });
+  // const shopNo = temp.headers
+  //   .get("location")
+  //   .split("shopDetail_shopNo=")[1]
+  //   .split("&")[0];
+
+  const shopNo = 13711170;
 
   console.log(shopNo);
 
