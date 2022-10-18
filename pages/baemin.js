@@ -1,5 +1,6 @@
 import axios from "axios";
 import Shop from "../components/Shop";
+import fetch from "node-fetch";
 
 export default function baeminPage({ pageComponentProps }) {
   return (
